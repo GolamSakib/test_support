@@ -1,2 +1,0 @@
-172.18.0.1 - - [10/Feb/2025:11:31:58 +0000] "POST /Kitchen/get_new_notifications_ajax HTTP/1.1" 404 6998 "http://irestora.test/Kitchen/panel/5" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-172.18.0.1 - - [10/Feb/2025:11:32:00 +0000] "POST /Kitchen/get_new_orders_ajax HTTP/1.1" 404 6998 "http://irestora.test/Kitchen/panel/5" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
