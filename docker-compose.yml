@@ -17,6 +17,8 @@ services:
       PHP_ERROR_LOG: /var/log/php/php_errors.log
     networks:
       - app_network
+    ports:
+      - "8000:80"
 
   nginx:
     image: nginx:alpine
@@ -41,18 +43,9 @@ services:
       POSTGRES_PASSWORD: 123456
     volumes:
       - dbdata:/var/lib/postgresql/data
-      - ./support_feb.sql:/docker-entrypoint-initdb.d/support_feb.sql
+      - ./support-feb.sql:/docker-entrypoint-initdb.d/support_feb.sql
       - ./docker/logs/postgresql:/var/log/postgresql
-    command:
-      - "postgres"
-      - "-c"
-      - "logging_collector=on"
-      - "-c"
-      - "log_directory=/var/log/postgresql"
-      - "-c"
-      - "log_filename=postgresql-%Y-%m-%d_%H%M%S.log"
-      - "-c"
-      - "log_statement=all"
+    entrypoint: ["sh", "-c", "psql -U postgres -d support_feb -f /docker-entrypoint-initdb.d/support-feb.sql && postgres -c logging_collector=on -c log_directory=/var/log/postgresql -c log_filename=postgresql-%Y-%m-%d_%H%M%S.log -c log_statement=all"]
     ports:
       - "5432:5432"
     networks:
